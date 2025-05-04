@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, Response, stream_with_context, redirect, url_for, jsonify
+import os
 import cv2
 import threading
 import queue  # Import queue for speech handling
@@ -246,4 +247,5 @@ def shutdown():
     speech_thread.join(timeout=1)  # Wait for the speech thread to finish
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=False, host='0.0.0.0', port=port)
