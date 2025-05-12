@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: vision-assistant
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    autoDeploy: true
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
